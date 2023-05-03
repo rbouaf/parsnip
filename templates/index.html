@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+    <link href="//db.onlinewebfonts.com/c/4b57277e89dfdd30c9a6b69acaf78d3a?family=SF+Pro" rel="stylesheet"
+          type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/2fed949d780f40eb2e2f4374e4de8df5?family=SF+Pro+Display" rel="stylesheet"
+          type="text/css"/>
+    <link href="//db.onlinewebfonts.com/c/49cf9e586b122fd8b8cf67c4df697fb9?family=SF+Pro+Rounded" rel="stylesheet"
+          type="text/css"/>
+
+
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/873b3a52d9.js"></script>
+
+    <title>parsnip</title>
+    <link href="{{ url_for('static', filename='images/parsnip.png') }}" rel="icon">
+    <meta content="parsnip" property="og:title"/>
+    <meta content="Quickly summarize any text or document." property="og:description"/>
+    <meta content="https://github.com/rayane-b/parsnip/" property="og:url"/>
+    <meta content="{{ url_for('static', filename='images/parsnip.png') }}" property="og:image"/>
+    <meta content="##fff891" data-react-helmet="true" name="theme-color"/>
+    <meta content="summary_large_image" name="twitter:card">
+
+</head>
+
+<body>
+
+<div class="main-container">
+    <div class="parsnip">
+        <img src="{{ url_for('static', filename='images/parsnip.png') }}" style="scale: 50%" alt="parsnip">
+        <h1 class="parsnip-title">parsnip</h1>
+        <h3 class="parsnip-subtitle"> Quickly summarize any text or document. </h3>
+    </div>
+
+    <div class="griddy">
+        <div class="boxy a">
+            <a class="upload-button" href="../summarize.html">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="container-pdf">
+                            <div class="icon"><i class="fa-solid fa-file-pdf card-icon"></i></div>
+                            <div class="text"><h3 class="card-title">Upload a PDF file</h3></div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </a>
+        </div>
+
+        <div class="boxy b">
+            <div class="card">
+                <div class="card-content">
+                    <div class="container-pdf">
+                        <div class="icon"><i class="fa-solid fa-file-pdf card-icon"></i></div>
+                        <div class="text" class="card-title">
+                            <form action="/summarize.html">
+                                <input class="input-text" id="pastURLField" name="field"
+                                       placeholder="Paste URL link here."
+                                       type="text">
+                                <input class="submit-input button" type="submit" value="🠊">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+
+{#        <div class="boxy b">#}
+{#            <div class="card url-card-pointer">#}
+{#                <div class="card-content">#}
+{#                    <div class="container">#}
+{#                        <div class="icon"><i class="fa-solid fa-link card-icon"></i></div>#}
+{#                        <div class="text" class="card-title">#}
+{#                            <form action="/summarize.html">#}
+{#                                <input class="input-text" id="pastURLField" name="field"#}
+{#                                       placeholder="Paste URL link here."#}
+{#                                       type="text">#}
+{#                                <input class="submit-input button" type="submit" value="🠊">#}
+{#                            </form>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="boxy c">
+            <div class="card-content-altered">
+                <form class="input-form" method="post">
+                    <textarea class="input-textarea" name="text" rows="10" cols="50"></textarea>
+                    <input class="input-submit card card-content-submit-button" type="submit" value="Summarize">
+                </form>
+            </div>
+        </div>
+
+        <div class="boxy d">
+            <div class="card-content-altered">
+                {% if summary %}
+                    <h3>Summary</h3>
+                    <div>{{ summary }}</div>
+                {% else %}
+                    <h3 class="summarized-text-box" style="width: 100%; height: 100%">
+                        Enter text you want to summarize, upload PDF, or paste a URL link. Your summarized text will appear here.
+                    </h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
